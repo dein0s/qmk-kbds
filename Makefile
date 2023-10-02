@@ -33,4 +33,3 @@ clean:
 	rm -rf $(CURDIR)/qmk_firmware/keyboards/$(PATH_$@)/keymaps/$(USER)
 	rm -rf $(CURDIR)/qmk_firmware/keyboards/keychron/q1v2
 	rm -rf $(CURDIR)/.build/
-	rm -rf ./qmk_firmware/
