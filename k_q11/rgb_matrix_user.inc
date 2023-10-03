@@ -16,19 +16,19 @@ RGB_MATRIX_EFFECT(dead_simple)
 #include "action_layer.h"
 #include "color.h"
 
-#define BASE_LAYER 0
-#define MEDIA_LAYER 1
-#define MAIN_LAYER 2
-#define LEFT_LAYER 3
-#define RIGHT_LAYER 4
-#define ADJUST_LAYER 5
+#define MAIN_LAYER 0
+#define LEFT_LAYER 1
+#define RIGHT_LAYER 2
+#define ADJUST_LAYER 3
+#define BASE_LAYER 4
+#define MEDIA_LAYER 5
 
-#define BASE_LAYER_COLOR RGB_RED
-#define MEDIA_LAYER_COLOR RGB_CHARTREUSE
 #define MAIN_LAYER_COLOR RGB_WHITE
 #define LEFT_LAYER_COLOR RGB_CYAN
 #define RIGHT_LAYER_COLOR RGB_YELLOW
 #define ADJUST_LAYER_COLOR RGB_BLUE
+#define BASE_LAYER_COLOR RGB_RED
+#define MEDIA_LAYER_COLOR RGB_CHARTREUSE
 
 bool array_contains(uint8_t *array, size_t array_size, uint8_t element)
 {
