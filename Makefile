@@ -18,9 +18,9 @@ $(KEYBOARDS):
 	qmk config user.qmk_home="$(QMK_LOCAL)"
 	# cleanup old symlinks
 	rm -rf $(CURDIR)/qmk_firmware/keyboards/$(PATH_$@)/keymaps/$(USER)
-	rm -rf $(CURDIR)/qmk_firmware/keyboards/keychron/q1v2
+	# rm -rf $(CURDIR)/qmk_firmware/keyboards/keychron/q1v2
 	# add new symlinks
-	ln -s $(CURDIR)/k_q1v2_orig $(QMK_LOCAL)/keyboards/keychron/q1v2
+	# ln -s $(CURDIR)/k_q1v2_orig $(QMK_LOCAL)/keyboards/keychron/q1v2
 	ln -s $(CURDIR)/$@ $(QMK_LOCAL)/keyboards/$(PATH_$@)/keymaps/$(USER)
 	# qmk lint
 	qmk lint -km $(USER) -km $(USER) -kb $(PATH_$@)
@@ -28,8 +28,8 @@ $(KEYBOARDS):
 	make BUILD_DIR=$(CURDIR)/.build -j1 -C qmk_firmware $(PATH_$@):$(USER)
 	# reset qmk to what it was before
 	qmk config user.qmk_home="$(ORIGINAL_QMK_HOME)"
+	rm -rf $(CURDIR)/qmk_firmware/keyboards/$(PATH_$@)/keymaps/$(USER)
 
 clean:
-	rm -rf $(CURDIR)/qmk_firmware/keyboards/$(PATH_$@)/keymaps/$(USER)
-	rm -rf $(CURDIR)/qmk_firmware/keyboards/keychron/q1v2
+	# rm -rf $(CURDIR)/qmk_firmware/keyboards/keychron/q1v2
 	rm -rf $(CURDIR)/.build/
