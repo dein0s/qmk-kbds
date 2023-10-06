@@ -1,0 +1,147 @@
+[
+  {
+    "author": "ALT+ALT=RALT | SHFT+SHFT=CAPSWORD | GUI+GUI=CAPSLOCK"
+  },
+  [
+    "`\n\n\n\n\n\nesc\n\n~",
+    "!\n\n\n\n\n\n1",
+    "@\n\n\n\n\n\n2",
+    "#\n\n\n\n\n\n3",
+    "$\n\n\n\n\n\n4",
+    "%\n\n\n\n\n\n5",
+    {
+      "x": 1
+    },
+    "^\n\n\n\n\n\n6",
+    "&\n\n\n\n\n\n7",
+    "*\n\n\n\n\n\n8",
+    "(\n\n\n\n\n\n9",
+    ")\n\n\n\n\n\n0"
+  ],
+  [
+    {
+      "x": 1.25,
+      "c": "#9c9797",
+      "t": "#000000\n\n\n\n#25e62d",
+      "a": 0
+    },
+    "q\n\n\n\nrgb1",
+    {
+      "t": "#000000\n\n\n\n#25e62d\n\n#2c28e0"
+    },
+    "w\n\n\n\nrgb1\n\n`",
+    "e\n\n\n\nrgb3\n\n\"",
+    {
+      "t": "#000000\n\n\n\n\n\n#2c28e0",
+      "a": 4
+    },
+    "r\n\n\n\n\n\n{",
+    "t\n\n\n\n\n\n[",
+    {
+      "x": 1,
+      "t": "#000000\n\n\n\n\n\n#e62525"
+    },
+    "y\n\n\n\n\n\ncopy",
+    "u\n\n\n\n\n\npaste",
+    "i\n\n\n\n\n\nins",
+    "o\n\n\n\n\n\ndel",
+    "p\n\n\n\n\n\npscr"
+  ],
+  [
+    {
+      "x": 1.75,
+      "t": "#000000\n\n\n\n\n\n#2c28e0\n\n\n\n#d1e028"
+    },
+    "a\n\n\n\n\n\n|\n\n\n\nGUI",
+    "s\n\n\n\n\n\n~\n\n\n\nALT",
+    "d\n\n\n\n\n\n'\n\n\n\nCTRL",
+    "f\n\n\n\n\n\n}\n\n\n\nSHFT",
+    {
+      "t": "#000000\n\n\n\n\n\n#2c28e0"
+    },
+    "g\n\n\n\n\n\n]",
+    {
+      "x": 1,
+      "t": "#000000\n\n\n\n#25e62d\n\n#e62525",
+      "a": 0
+    },
+    "h\n\n\n\n⏮️\n\n◄",
+    {
+      "t": "#000000\n\n\n\n#25e62d\n\n#e62525\n\n\n\n#d1e028"
+    },
+    "j\n\n\n\n🔇\n\n▼\n\n\n\nSHFT",
+    "k\n\n\n\n⏯️\n\n▲\n\n\n\nCTRL",
+    "l\n\n\n\n⏭️\n\n►\n\n\n\nALT",
+    {
+      "t": "#000000\n\n\n\n\n\n\n\n\n\n#d1e028",
+      "a": 4
+    },
+    ";\n\n\n\n\n\n\n\n\n\nGUI",
+    {
+      "t": "#000000"
+    },
+    "bspc"
+  ],
+  [
+    {
+      "x": 2.25,
+      "t": "#000000\n\n\n\n\n\n#2c28e0"
+    },
+    "z\n\n\n\n\n\n\\",
+    "x\n\n\n\n\n\n+",
+    "c\n\n\n\n\n\n=",
+    "v\n\n\n\n\n\n_",
+    "b\n\n\n\n\n\n-",
+    {
+      "x": 1,
+      "t": "#000000\n\n\n\n\n\n#e62525"
+    },
+    "n\n\n\n\n\n\nhome",
+    "m\n\n\n\n\n\npgdn",
+    ",\n\n\n\n\n\npgup",
+    ".\n\n\n\n\n\nend",
+    {
+      "t": "#000000"
+    },
+    "?",
+    {
+      "w": 2
+    },
+    "enter"
+  ],
+  [
+    {
+      "x": 3,
+      "t": "#28b0e0",
+      "a": 7
+    },
+    "",
+    {
+      "t": "#e62525\n\n\n\n#25e62d",
+      "a": 0
+    },
+    "RL\n\ntab\n\nA",
+    {
+      "t": "#000000",
+      "a": 4,
+      "w": 2.25
+    },
+    "spc",
+    {
+      "x": 1,
+      "t": "#000000\n\n\n\n\n\n#e62525",
+      "w": 2.75
+    },
+    "bspc\n\n\n\n\n\nesc",
+    {
+      "t": "#2c28e0\n\n\n\n#25e62d",
+      "a": 0
+    },
+    "LL\n\ntab\n\nA",
+    {
+      "t": "#4294cf",
+      "a": 7
+    },
+    ""
+  ]
+]
