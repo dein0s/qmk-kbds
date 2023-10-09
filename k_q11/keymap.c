@@ -46,6 +46,9 @@ enum layers{
 #define GUI_SLCN MT(MOD_RGUI, KC_SCLN)
 #define SFT_SPC MT(MOD_LSFT, KC_SPC) 
 
+#define KC_COPY LCTL(KC_INSERT)
+#define KC_PASTE LSFT(KC_INSERT)
+
 #define OSM_LS OSM(MOD_LSFT)
 #define OSM_RS OSM(MOD_RSFT)
 #define OSM_RA OSM(MOD_RALT)
@@ -77,7 +80,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false; // Skip all further processing of this key
         case D_C_RGB2:
             if (record->event.pressed) {
-                rgb_matrix_mode(RGB_MATRIX_CUSTOM_touch_typing);
+                rgb_matrix_mode(RGB_MATRIX_CUSTOM_colored_layers_breathing);
             }
             return false; // Skip all further processing of this key
         case D_C_RGB3:

@@ -5,7 +5,7 @@
 // Declare custom effects using the RGB_MATRIX_EFFECT macro
 // (note the lack of semicolon after the macro!)
 RGB_MATRIX_EFFECT(colored_layers)
-RGB_MATRIX_EFFECT(touch_typing)
+RGB_MATRIX_EFFECT(colored_layers_breathing)
 RGB_MATRIX_EFFECT(touch_typing_simple)
 RGB_MATRIX_EFFECT(dead_simple)
 
@@ -23,12 +23,20 @@ RGB_MATRIX_EFFECT(dead_simple)
 #define BASE_LAYER 4
 #define MEDIA_LAYER 5
 
-#define MAIN_LAYER_COLOR RGB_WHITE
+#define MAIN_LAYER_COLOR RGB_RED
 #define LEFT_LAYER_COLOR RGB_CYAN
 #define RIGHT_LAYER_COLOR RGB_YELLOW
 #define ADJUST_LAYER_COLOR RGB_BLUE
-#define BASE_LAYER_COLOR RGB_RED
+#define BASE_LAYER_COLOR RGB_WHITE
 #define MEDIA_LAYER_COLOR RGB_CHARTREUSE
+
+
+#define MAIN_LAYER_COLOR_H HSV_RED
+#define LEFT_LAYER_COLOR_H HSV_CYAN
+#define RIGHT_LAYER_COLOR_H HSV_YELLOW
+#define ADJUST_LAYER_COLOR_H HSV_BLUE
+#define BASE_LAYER_COLOR_H HSV_WHITE
+#define MEDIA_LAYER_COLOR_H HSV_CHARTREUSE
 
 bool array_contains(uint8_t *array, size_t array_size, uint8_t element)
 {
@@ -47,7 +55,43 @@ bool array_contains(uint8_t *array, size_t array_size, uint8_t element)
 static bool dead_simple(effect_params_t *params)
 {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
-    rgb_matrix_set_color(49, RGB_RED);
+    return rgb_matrix_check_finished_leds(led_max);
+}
+
+
+static bool colored_layers_breathing(effect_params_t *params)
+{
+    RGB_MATRIX_USE_LIMITS(led_min, led_max);
+    switch(get_highest_layer(layer_state | default_layer_state)) {
+        case BASE_LAYER: // BASE
+            rgb_matrix_sethsv(BASE_LAYER_COLOR_H);
+            break;
+        case MEDIA_LAYER: // MEDIA
+            rgb_matrix_sethsv(MEDIA_LAYER_COLOR_H);
+            break;
+        case MAIN_LAYER: // MAIN
+            rgb_matrix_sethsv(MAIN_LAYER_COLOR_H);
+            break;
+        case LEFT_LAYER: // LEFT
+            rgb_matrix_sethsv(LEFT_LAYER_COLOR_H);
+            break;
+        case RIGHT_LAYER: // RIGHT
+            rgb_matrix_sethsv(RIGHT_LAYER_COLOR_H);
+            break;
+        case ADJUST_LAYER: // ADJUST
+            rgb_matrix_sethsv(ADJUST_LAYER_COLOR_H);
+            break;
+        default:
+            break;
+    }
+    HSV      hsv  = rgb_matrix_config.hsv;
+    uint16_t time = scale16by8(g_rgb_timer, rgb_matrix_config.speed / 8);
+    hsv.v         = scale8(abs8(sin8(time) - 128) * 2, hsv.v);
+    RGB rgb           = hsv_to_rgb(hsv);
+    for (uint8_t i = led_min; i < led_max; i++) {
+        RGB_MATRIX_TEST_LED_FLAGS();
+        rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
+    }
     return rgb_matrix_check_finished_leds(led_max);
 }
 
@@ -78,77 +122,6 @@ static bool colored_layers(effect_params_t* params) {
     }
   return rgb_matrix_check_finished_leds(led_max);
 }
-
-static bool touch_typing(effect_params_t *params)
-{
-    RGB_MATRIX_USE_LIMITS(led_min, led_max);
-    //                     1 | 0 | Q | P | [ | ] | A | ; | ' | Z | /
-    uint8_t pinkies[] = {  9, 53, 17, 62, 63, 64, 24, 71, 72, 31, 79};
-    //                    2 | 9 | W | O | S | L | X | .
-    uint8_t ringers[] = { 10, 52, 18, 61, 25, 70, 32, 78 };
-    //                      3 | 8 | E | I | D | K | C | ,
-    uint8_t middlers[] = { 11, 51, 19, 60, 26, 69, 33, 77 };
-    //                         4 | 5 | R | T | F | G | V | B
-    uint8_t left_indexes[] = { 12, 13, 20, 21, 27, 28, 34, 35 };
-    //                          6 | 7 | Y | U | H | J | N | M
-    uint8_t right_indexes[] = { 14, 50, 58, 59, 67, 68, 75, 75 };
-
-    for (int i = led_min; i < led_max; i++)
-    {
-        if (array_contains(ringers, sizeof(ringers) / sizeof(ringers[0]), i))
-        {
-            rgb_matrix_set_color(i, RGB_GREEN);
-            continue;
-        }
-        else if (array_contains(middlers, sizeof(middlers) / sizeof(middlers[0]), i))
-        {
-            rgb_matrix_set_color(i, RGB_ORANGE);
-            continue;
-        }
-        else if (array_contains(pinkies, sizeof(pinkies) / sizeof(pinkies[0]), i))
-        {
-            rgb_matrix_set_color(i, RGB_YELLOW);
-            continue;
-        }
-        else if (array_contains(left_indexes, sizeof(left_indexes) / sizeof(left_indexes[0]), i))
-        {
-            rgb_matrix_set_color(i, RGB_PINK);
-            continue;
-        }
-        else if (array_contains(right_indexes, sizeof(right_indexes) / sizeof(right_indexes[0]), i))
-        {
-            rgb_matrix_set_color(i, RGB_BLUE);
-            continue;
-        }
-
-        switch (get_highest_layer(layer_state | default_layer_state))
-        {
-            case BASE_LAYER:
-                rgb_matrix_set_color(i, BASE_LAYER_COLOR);
-                break;
-            case MEDIA_LAYER:
-                rgb_matrix_set_color(i, MEDIA_LAYER_COLOR);
-                break;
-            case MAIN_LAYER:
-                rgb_matrix_set_color(i, MAIN_LAYER_COLOR);
-                break;
-            case LEFT_LAYER:
-                rgb_matrix_set_color(i, LEFT_LAYER_COLOR);
-                break;
-            case RIGHT_LAYER:
-                rgb_matrix_set_color(i, RIGHT_LAYER_COLOR);
-                break;
-            case ADJUST_LAYER:
-                rgb_matrix_set_color(i, ADJUST_LAYER_COLOR);
-                break;
-            default:
-                break;
-        }
-    }
-
-    return rgb_matrix_check_finished_leds(led_max);
-}
-
 
 static bool touch_typing_simple(effect_params_t *params)
 {
