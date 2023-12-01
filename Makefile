@@ -6,6 +6,7 @@ USER = dein0s
 KEYBOARDS = k_q11 k_q1v2
 PATH_k_q11 = keychron/q11/ansi_encoder
 PATH_k_q1v2 = keychron/q1v2/ansi_encoder
+# /keyboards/keebio/iris
 
 all: $(KEYBOARDS)
 
