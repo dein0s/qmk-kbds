@@ -34,3 +34,8 @@ $(KEYBOARDS):
 clean:
 	# rm -rf $(CURDIR)/qmk_firmware/keyboards/keychron/q1v2
 	rm -rf $(CURDIR)/.build/
+
+link:
+	ln -s $(CURDIR)/k_iris8_cal $(QMK_LOCAL)/keyboards/keebio/iris/keymaps/dein0s_cal
+	qmk lint -kb keebio/iris/rev8 -km dein0s_cal
+
