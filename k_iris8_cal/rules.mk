@@ -1,5 +1,7 @@
 VPATH += keyboards/gboards
 
+SRC += oneshot.c
+
 VIA_ENABLE = yes
 LTO_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
