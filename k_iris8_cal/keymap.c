@@ -170,17 +170,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _FN1, _FN2, _FN3);
 }
 
-// #ifdef ENCODER_MAP_ENABLE
-// const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-//     [_DEF] = { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-//     [_RGT] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_MPRV, KC_MNXT)},
-//     [_LFT] = { ENCODER_CCW_CW(KC_HOME, KC_END), ENCODER_CCW_CW(RGB_RMOD, RGB_MOD)},
-//     [_ADJ] = { ENCODER_CCW_CW(RGB_SPD, RGB_SPI), ENCODER_CCW_CW(RGB_HUD, RGB_HUI)},
-// };
-// #endif
-
-
-
+#ifdef ENCODER_MAP_ENABLE
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [_DEF] = { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [_RGT] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_MPRV, KC_MNXT)},
+    [_LFT] = { ENCODER_CCW_CW(KC_HOME, KC_END), ENCODER_CCW_CW(RGB_RMOD, RGB_MOD)},
+    [_ADJ] = { ENCODER_CCW_CW(RGB_SPD, RGB_SPI), ENCODER_CCW_CW(RGB_HUD, RGB_HUI)},
+};
+#endif
 
 /*
 qmk:json:start
