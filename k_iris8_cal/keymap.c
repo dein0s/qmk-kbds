@@ -47,8 +47,8 @@ enum keycodes {
 #define CK_LTAB LSFT(KC_TAB)
 
 // combos
-COMB(XC_COPY, CK_COPY, KC_X, KC_C)
-COMB(CV_PASTE, CK_PASTE , KC_C, KC_V)
+// COMB(XC_COPY, CK_COPY, KC_X, KC_C)
+// COMB(CV_PASTE, CK_PASTE , KC_C, KC_V)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DEF] = LAYOUT(
